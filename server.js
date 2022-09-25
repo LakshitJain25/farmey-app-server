@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const { imageRouter } = require('./routes/imageRouter')
 const { productRouter } = require('./routes/productRouter')
+const { cargoRouter } = require('./routes/cargoRouter')
 const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 8080
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/imageupload', imageRouter)
 app.use('/api/product', productRouter)
+app.use('/api/cargo', cargoRouter)
 app.use((err, req, res, next) => {
     console.log(err)
     const errorStatus = err.status || 500
